@@ -14,9 +14,9 @@ namespace DesignPatternLearning.ObserverPattern
         private double temperature;
         private double humidity;
         private double pressure;
-        private Subject weatherData;
+        private ISubject weatherData;
 
-        public CurrentConditionsDisplay(Subject weatherData)
+        public CurrentConditionsDisplay(ISubject weatherData)
         {
             this.weatherData = weatherData;
             weatherData.RegisterObserver(this);

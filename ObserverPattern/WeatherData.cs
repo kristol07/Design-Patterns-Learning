@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesignPatternLearning.ObserverPattern
 {
-    public class WeatherData: Subject
+    public class WeatherData: ISubject
     {
         public double temperature;
         public double humidity;

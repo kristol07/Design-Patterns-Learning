@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DesignPatternLearning.ObserverPattern
 {
-    public interface Subject
+    public interface ISubject
     {
         void RegisterObserver(Observer o);
 
