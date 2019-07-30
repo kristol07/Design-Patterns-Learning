@@ -8,17 +8,9 @@ namespace DesignPatternLearning.DecoratorPattern
     {
         public string description = "Unknown Beverage";
 
-        public string GetDescription()
-        {
-            return description;
-        }
+        public abstract string GetDescription();
 
         public abstract double Cost();
-    }
-
-    public abstract class CondimentDecorator : Beverage
-    {
-        public abstract string GetDescription();
     }
 
     public class Espresso : Beverage
@@ -30,6 +22,11 @@ namespace DesignPatternLearning.DecoratorPattern
         public override double Cost()
         {
             return 1.99;
+        }
+
+        public override string GetDescription()
+        {
+            return description;
         }
     }
 
@@ -44,16 +41,34 @@ namespace DesignPatternLearning.DecoratorPattern
         {
             return 0.89;
         }
+
+        public override string GetDescription()
+        {
+            return description;
+        }
+    }
+
+
+    public abstract class CondimentDecorator : Beverage
+    {
+
+        protected Beverage beverage;
+
+        public CondimentDecorator(Beverage beverage)
+        {
+            this.beverage = beverage;
+        }
+
+        public override string GetDescription()
+        {
+            return beverage.GetDescription();
+        }
     }
 
     public class Mocha : CondimentDecorator
     {
-        Beverage beverage;
 
-        public Mocha(Beverage beverage)
-        {
-            this.beverage = beverage;
-        }
+        public Mocha(Beverage beverage) : base(beverage) { }
 
         public override string GetDescription()
         {
