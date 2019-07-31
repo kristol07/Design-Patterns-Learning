@@ -1,0 +1,53 @@
+﻿Summary:
+
+- Creational
+
+	- Simple Factory
+    - Factory Method
+    - Abstract Factory
+    - Builder
+    - Prototype
+    - Singleton
+
+- Structral
+
+    - Adapter
+    - Bridge
+    - Composite
+    - Decorator
+    - Facade
+    - Flyweight
+    - Proxy
+
+- Behavioral
+
+    - Chain of Responsibility
+    - Command
+    - Iterator
+    - Mediator
+    - Memento
+    - Observer
+    - Visitor
+    - Strategy
+    - State
+    - Template Method
+
+---
+
+Question:
+
+1. Simple Factory vs Factory method vs Abstract factory ?
+
+
+---
+
+Reference:
+
+In Chinese:
+https://design-patterns.readthedocs.io/zh_CN/latest/index.html (****)
+	=> 总结了各种模式的优缺点，适用场景等。不过代码实现为C++
+https://blog.csdn.net/lovelion/article/details/17517213
+
+Design patterns implemention in C#: 
+https://github.com/anupavanm/csharp-design-patterns-for-humans (****)
+https://github.com/abishekaditya/DesignPatterns (**)
