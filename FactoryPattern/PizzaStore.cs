@@ -4,28 +4,6 @@ using System.Text;
 
 namespace DesignPatternLearning.FactoryPattern
 {
-    //public class PizzaStore
-    //{
-    //    protected SimplePizzaFactory factory;
-
-    //    public PizzaStore(SimplePizzaFactory factory)
-    //    {
-    //        this.factory = factory;
-    //    }
-
-    //    public Pizza OrderPizza(string type)
-    //    {
-    //        Pizza pizza = factory.CreatePizza(type);
-
-    //        pizza.Prepare();
-    //        pizza.Bake();
-    //        pizza.Cut();
-    //        pizza.Box();
-
-    //        return pizza;
-    //    }
-    //}
-
     public abstract class PizzaStore
     {
         public Pizza OrderPizza(string type)
@@ -47,16 +25,20 @@ namespace DesignPatternLearning.FactoryPattern
     {
         public override Pizza CreatePizza(string type)
         {
+            PizzaIngredientFactory ingredientFactory = new NYPizzaIngredientFactory();
+
             switch (type)
             {
                 case "cheese":
-                    return new NYStyleCheesePizza();
-                case "pepperoni":
-                    return new NYStylePepperoniPizza();
-                case "clam":
-                    return new NYStyleClamPizza();
+                    Pizza pizza = new CheesePizza(ingredientFactory);
+                    pizza.SetName("New York Style Cheese Pizza");
+                    return pizza;
+                case "veggie":
+                    Pizza pizza = new VeggiePizza(ingredientFactory);
+                    pizza.SetName("New York Style Veggie Pizza");
+                    return pizza;
                 default:
-                    return new NYStyleVeggiePizza();
+                    return new ClamPizza(ingredientFactory);
             }
         }
     }

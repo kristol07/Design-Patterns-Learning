@@ -8,21 +8,14 @@ namespace DesignPatternLearning.FactoryPattern
     public abstract class Pizza
     {
         protected string name;
-        protected string dough;
-        protected string sauce;
-        protected List<string> toppings = new List<string>();
+        protected Dough dough;
+        protected Sauce sauce;
+        protected List<Veggie> veggies;
+        protected Cheese cheese;
+        protected Pepperoni pepperoni;
+        protected Clams clam;
 
-        public void Prepare()
-        {
-            Console.WriteLine("Preparing " + name);
-            Console.WriteLine("Tossing dough...");
-            Console.WriteLine("Adding sauce...");
-            Console.WriteLine("Adding toppings: ");
-            foreach (string topping in toppings)
-            {
-                Console.WriteLine(" {0}", topping);
-            }
-        }
+        public abstract void Prepare();
 
         public void Bake()
         {
@@ -44,33 +37,28 @@ namespace DesignPatternLearning.FactoryPattern
             return name;
         }
 
-    }
-
-    public class NYStyleCheesePizza : Pizza
-    {
-        public NYStyleCheesePizza()
+        public void SetName(string name)
         {
-            name = "NY Style Sauce and Cheese Pizza";
-            dough = "Thin Crust Dough";
-            sauce = "Marinara Sauce";
-
-            toppings.Add("Grated Reggiano Cheese");
+            this.name = name;
         }
 
     }
 
-    public class PepperoniPizza : Pizza
+    public class CheesePizza : Pizza
     {
+        PizzaIngredientFactory ingredientFactory;
 
-    }
+        public CheesePizza(PizzaIngredientFactory ingredientFactory)
+        {
+            this.ingredientFactory = ingredientFactory;
+        }
 
-    public class ClamPizza : Pizza
-    {
-
-    }
-
-    public class VeggiePizza : Pizza
-    {
-
+        public override void Prepare()
+        {
+            Console.WriteLine("Preparing " + name);
+            dough = ingredientFactory.CreateDough();
+            sauce = ingredientFactory.CreateSauce();
+            cheese = ingredientFactory.CreateCheese();
+        }
     }
 }
